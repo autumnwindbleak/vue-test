@@ -1,62 +1,57 @@
 <template>
   <bm-overlay
-      ref='workplaceIcon'
-      :class='{sample: true, active}'
-      pane='labelPan'
-      @draw="draw"
-  >
-    <div v-text="text" @click="handleClick"></div>
+      ref="workplaceIcon"
+      :class="{sample: true, active}"
+      pane="markerPane"
+      @draw="draw">
+    <img alt="logoimg" :src="imgUrl" width="100%" height="100%" @click="handleClick"/>
   </bm-overlay>
 </template>
 
 <script>
 import BmOverlay from 'vue-baidu-map/components/overlays/Overlay'
 export default {
-  name: "WorkplaceIcon",
-  props:['text','position','active'],
-  watch:{
+  props: ['text','imgUrl', 'position', 'active'],
+  watch: {
     position: {
-      handler() {
+      handler () {
         this.$refs.workplaceIcon.reload()
       },
       deep: true
     }
   },
-  components: {
-    BmOverlay
-  },
   methods: {
     handleClick () {
       global.alert('Well done.')
     },
-    draw({el, BMap, map}) {
-      console.log(this.position)
+    draw ({el, BMap, map}) {
       const {lng, lat} = this.position
       const pixel = map.pointToOverlayPixel(new BMap.Point(lng, lat))
-      console.log(pixel)
-      console.log(el)
-      el.style.left = pixel.x - 60 + 'px'
-      el.style.top = pixel.y - 20 + 'px'
+      el.style.left = pixel.x - 10 + 'px'
+      el.style.top = pixel.y - 10 + 'px'
     }
+  },
+  components:{
+    BmOverlay,
   }
 }
 </script>
 
-<style scoped>
-  .sample {
-    width: 120px;
-    height: 40px;
-    line-height: 40px;
-    background: rgba(0,0,0,0.5);
-    overflow: hidden;
-    box-shadow: 0 0 5px #000;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-    position: absolute;
-  }
-  .sample.active {
-    background: rgba(0,0,0,0.75);
-    color: #fff;
-  }
+<style>
+.sample {
+  width: 40px;
+  height: 40px;
+  /*line-height: 40px;*/
+  /*background: rgba(0,0,0,0.5);*/
+  overflow: hidden;
+  /*box-shadow: 0 0 5px #000;*/
+  /*color: #fff;*/
+  text-align: center;
+  /*padding: 10px;*/
+  position: absolute;
+}
+.sample.active {
+  /*background: rgba(0,0,0,0.75);*/
+  /*color: #fff;*/
+}
 </style>
