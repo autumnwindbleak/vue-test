@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "element-ui": "^2.15.1",
+    "element-ui": "^2.15.2",
     "vue": "^2.6.11"
   },
   "devDependencies": {
@@ -39,5 +39,9 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "main": "index.js",
+  "repository": "https://github.com/autumnwindbleak/vue-test.git",
+  "author": "王雪洋 <autumnwindbleak@qq.com>",
+  "license": "MIT"
 }
